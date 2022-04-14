@@ -16,7 +16,7 @@ export interface ILibraryFacade {
       - O 'title' não pode ser vazio ou nulo
       - O 'id' do livro deve estar presente no catálogo
   */
-  editBookInCatalog(bookId: string, newTitle: string): void;
+  editBookInCatalog(bookId: number, newTitle: string): void;
   
   /*
     Método utilizado para mostrar todos os livros cadastrados no catálogo
@@ -42,7 +42,7 @@ export interface ILibraryFacade {
     Obs.: O formato da data 'upto' é ser: 'YYYY/MM/DD', não precisa
     validar essa data, assuma que ela sempre será dada corretamente
   */
- rent(userId: string, bookId: string, upto: string): void;
+ rent(userId: string, bookId: number, upto: string): void;
   
  /*
     Método utilizado para mostrar todos os aluguéis de

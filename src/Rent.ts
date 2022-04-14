@@ -1,8 +1,9 @@
+
 export class Rent {
   userId: string
-  bookId: string
+  bookId: number
   upto: string
-  constructor(userId: string, bookId: string, upto: string){
+  constructor(userId: string, bookId: number, upto: string){ 
     if(!userId || !bookId){throw new Error (`id inválido`)}
     this.userId = userId
     this.bookId = bookId
@@ -12,7 +13,7 @@ export class Rent {
 
 export class RentService {
   rents: Rent[] = []
-  add(userId: string, bookId:string, upto: string): Rent {
+  add(userId: string, bookId:number, upto: string): Rent {
     try {
       const rent = new Rent(userId, bookId, upto)
       this.rents.push(rent)

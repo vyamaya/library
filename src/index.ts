@@ -1,4 +1,3 @@
-import { User, UserService } from "./User";
 import { Facade } from "./Facade";
 
 console.log("hello");
@@ -15,7 +14,7 @@ facade.addBookToCatalog(title2)
 facade.addBookToCatalog(title3)
 facade.signupUser("fulano de tal", "rua 1")
 
-const bookId = facade.showAllBooksInCatalog()[0].id
+const bookId = 1
 const userId = facade.showAllUsers()[0].id
 const upto = "2022/05/12"
 

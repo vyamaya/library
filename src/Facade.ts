@@ -11,7 +11,7 @@ export class Facade implements ILibraryFacade {
   addBookToCatalog(title: string): void {
     this.bookService.add(title)
   }
-  editBookInCatalog(bookId: string, newTitle: string): void {
+  editBookInCatalog(bookId: number, newTitle: string): void {
     this.bookService.edit(bookId, newTitle)
   }
   showAllBooksInCatalog(): Book[] {
@@ -23,7 +23,7 @@ export class Facade implements ILibraryFacade {
   showAllUsers(): User[] {
     return this.userService.findAll();
   }
-  rent(userId: string, bookId: string, upto: string): void {
+  rent(userId: string, bookId: number, upto: string): void {
     this.rentService.add(userId, bookId, upto)
   }
   showAllRentings(): Rent[] {
