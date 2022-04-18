@@ -16,8 +16,15 @@ export class Book {
 }
 
 export class BookService {
+  private static instance: BookService
   books: Book[] = []
-
+  private constructor(){}
+  static getInstance() {
+    if(!BookService.instance){
+      BookService.instance = new BookService()
+    }
+    return BookService.instance
+  }
   add(title: string): Book {
     let lastId: number = 0
     if (this.books.length === 0) {

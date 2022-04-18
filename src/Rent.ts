@@ -12,7 +12,15 @@ export class Rent {
 }
 
 export class RentService {
+  private static instance: RentService
   rents: Rent[] = []
+  private constructor(){}
+  static getInstance() {
+    if(!RentService.instance){
+      RentService.instance = new RentService()
+    }
+    return RentService.instance
+  }
   add(userId: string, bookId:number, upto: string): Rent {
     try {
       const rent = new Rent(userId, bookId, upto)
