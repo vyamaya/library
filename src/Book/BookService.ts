@@ -1,31 +1,18 @@
-const LIMITE_CARACTERE = 100
-
-export class Book {
-  id: number
-  title: string
-  constructor(id: number, title: string) {
-    this.id = id
-    this.title = title
-  }
-  setTitle(newTitle: string): void {
-    if (newTitle.length > LIMITE_CARACTERE) {
-      throw new Error(`Ultrapassou limite de ${LIMITE_CARACTERE} caracteres`)
-    }
-    this.title = newTitle
-  }
-}
+import { Book } from "./Book"
+import { TAddBookParams } from "./BookType"
 
 export class BookService {
   private static instance: BookService
   books: Book[] = []
-  private constructor(){}
+  private constructor() {}
   static getInstance() {
-    if(!BookService.instance){
+    if (!BookService.instance) {
       BookService.instance = new BookService()
     }
     return BookService.instance
   }
-  add(title: string): Book {
+  add(bookParams: TAddBookParams): Book {
+    const{type, title, pages, year} = bookParams
     let lastId: number = 0
     if (this.books.length === 0) {
       lastId = 0
@@ -34,7 +21,7 @@ export class BookService {
       lastId = findLastId.id
     }
     try {
-      const book = new Book(lastId + 1, title)
+      const book = new Book(lastId + 1, type, title, pages, year)
       this.books.push(book)
       return book
     } catch (error) {

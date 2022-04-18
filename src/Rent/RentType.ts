@@ -1,0 +1,1 @@
+export type TAddRentParams = {userId: number, bookId: number, upto: string}
