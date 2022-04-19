@@ -12,7 +12,12 @@ export class BookService {
     return BookService.instance
   }
   add(bookParams: TAddBookParams): Book {
-    const{type, title, pages, year} = bookParams
+    const {
+      type,
+      title,
+      pages,
+      year
+    } = bookParams
     let lastId: number = 0
     if (this.books.length === 0) {
       lastId = 0
@@ -37,5 +42,16 @@ export class BookService {
   }
   findAll(): Book[] {
     return this.books
+  }
+  findById(bookId: number): Book {
+    const book = this.books.find(book => book.id === bookId)
+    if (!book) {
+      throw new Error(`Livro não encontrado`)
+    }
+    try {
+      return book
+    } catch (error) {
+      throw new Error(`BookService: ${error}`)
+    }
   }
 }
